@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login — Manutenção de Sistemas SENAI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body id="login-page">
+
+    <div class="container login-container">
+        <div class="login-header">
+            <div style="font-size: 2.2rem; margin-bottom: 0.5rem;">🔧</div>
+            <h1>Manutenção de Sistemas</h1>
+            <p>SENAI — Curso Técnico em Desenvolvimento de Sistemas</p>
+        </div>
+
+        <div class="card">
+            <h2>Acesso ao Sistema</h2>
+            <div id="loginError" class="alert error"></div>
+            
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="user">Usuário ou E-mail</label>
+                    <input type="text" id="user" placeholder="Digite seu usuário ou e-mail institucional" required autocomplete="username">
+                </div>
+                <div class="form-group">
+                    <label for="pass">Senha de Acesso</label>
+                    <input type="password" id="pass" placeholder="Digite sua senha" required autocomplete="current-password">
+                </div>
+                <button type="submit" class="btn" style="width: 100%;">Entrar no Ambiente</button>
+            </form>
+
+            <div class="login-credentials-hint">
+                <div style="font-weight: 600; margin-bottom: 0.25rem;">Credenciais Didáticas para Prática:</div>
+                <div>👤 <strong>Aluno:</strong> <code>aluno</code> / Senha: <code>123</code></div>
+                <div>👨‍🏫 <strong>Docente:</strong> <code>professor@senai.br</code> / Senha: <code>SenhaValida123</code></div>
+            </div>
+        </div>
+
+        <div class="pedagogical-notice">
+            <span>Manutenção de Sistemas:</span> Objeto didático de aplicação para diagnóstico, classificação de chamados e PDCA.
+        </div>
+    </div>
+
+    <script src="validadores.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

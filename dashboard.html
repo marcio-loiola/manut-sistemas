@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard — Manutenção de Sistemas SENAI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="brand-wrapper">
+            <span class="brand-logo">SENAI</span>
+            <h1>Manutenção de Sistemas</h1>
+        </div>
+        <nav>
+            <a href="dashboard.html" class="active">Dashboard</a>
+            <a href="novo.html">Abrir Chamado</a>
+            <a href="consulta.html">Consultar Chamados</a>
+            <button class="logout-btn" onclick="logout()">Sair</button>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="page-title">
+            <h2>Painel Operacional de Manutenção</h2>
+        </div>
+
+        <div class="dashboard-toolbar">
+            <div class="filter-group">
+                <label for="filtroTipoDashboard">Filtrar Indicadores por Tipo de Manutenção:</label>
+                <select id="filtroTipoDashboard">
+                    <option value="">Todos os Tipos de Manutenção</option>
+                    <option value="Corretiva">Corretiva (Falhas reportadas)</option>
+                    <option value="Preventiva">Preventiva (Ações proativas)</option>
+                    <option value="Adaptativa">Adaptativa (Ambiente e normas)</option>
+                    <option value="Evolutiva">Evolutiva (Novos recursos)</option>
+                </select>
+            </div>
+            <div style="font-size: 0.85rem; color: #64748b;">
+                Padrão Normativo: <strong>ISO/IEC 14764</strong>
+            </div>
+        </div>
+
+        <div class="dashboard-stats" id="dashboardStats">
+            <div class="stat-card card-abertos">
+                <h3>Chamados Abertos</h3>
+                <div class="number" id="countAbertos">0</div>
+                <small style="color: #64748b; font-size: 0.8rem;">Aguardando triagem / início</small>
+            </div>
+            <div class="stat-card card-andamento">
+                <h3>Em Andamento</h3>
+                <div class="number" id="countAndamento">0</div>
+                <small style="color: #64748b; font-size: 0.8rem;">Em atendimento técnico</small>
+            </div>
+            <div class="stat-card card-encerrados">
+                <h3>Encerrados</h3>
+                <div class="number" id="countEncerrados">0</div>
+                <small style="color: #64748b; font-size: 0.8rem;">Manutenção finalizada</small>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>Distribuição de Demandas por Tipo de Manutenção</h3>
+            <p>Contagem acumulada de chamados por categoria técnica da norma ISO/IEC 14764. Utilize estes quantitativos para alimentar sua planilha de indicadores PDCA.</p>
+            
+            <div class="manutencao-breakdown">
+                <div class="breakdown-item corretiva">
+                    <div>
+                        <div class="breakdown-label">Corretiva</div>
+                        <small style="color: #64748b; font-size: 0.75rem;">Correção de bugs e falhas</small>
+                    </div>
+                    <div class="breakdown-count" id="countCorretiva">0</div>
+                </div>
+
+                <div class="breakdown-item preventiva">
+                    <div>
+                        <div class="breakdown-label">Preventiva</div>
+                        <small style="color: #64748b; font-size: 0.75rem;">Antecipação de problemas</small>
+                    </div>
+                    <div class="breakdown-count" id="countPreventiva">0</div>
+                </div>
+
+                <div class="breakdown-item adaptativa">
+                    <div>
+                        <div class="breakdown-label">Adaptativa</div>
+                        <small style="color: #64748b; font-size: 0.75rem;">Ajustes de ambiente e leis</small>
+                    </div>
+                    <div class="breakdown-count" id="countAdaptativa">0</div>
+                </div>
+
+                <div class="breakdown-item evolutiva">
+                    <div>
+                        <div class="breakdown-label">Evolutiva</div>
+                        <small style="color: #64748b; font-size: 0.75rem;">Melhorias e novas funções</small>
+                    </div>
+                    <div class="breakdown-count" id="countEvolutiva">0</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card" style="background-color: #f8fafc; border-left: 4px solid var(--primary-color);">
+            <h3>📋 Atividade Prática da UC: Cálculo Externo de Indicadores PDCA</h3>
+            <p>Conforme os objetivos pedagógicos da disciplina de Manutenção de Sistemas, <strong>o cálculo de indicadores não é automatizado nesta interface</strong>. Seu papel como futuro técnico é extrair estes dados consolidados e preencher seu portfólio externo (Planilha Google / Excel / Notion):</p>
+            <ul style="margin: 0.75rem 0 0.5rem 1.5rem; color: #475569; font-size: 0.9rem;">
+                <li><strong>Plan (Planejar):</strong> Defina a meta de distribuição ideal (ex: diminuir Corretivas e aumentar Preventivas).</li>
+                <li><strong>Do (Executar):</strong> Analise os chamados abertos e classifique as soluções propostas.</li>
+                <li><strong>Check (Verificar):</strong> Calcule indicadores como MTTR (Tempo Médio de Reparo), % por tipo e taxa de reincidência.</li>
+                <li><strong>Act (Agir):</strong> Proponha melhorias no código ou nos procedimentos para a Versão B.</li>
+            </ul>
+        </div>
+
+        <div class="pedagogical-notice">
+            <span>Manutenção de Sistemas:</span> Objeto didático de aplicação para diagnóstico, classificação de chamados e PDCA.
+        </div>
+    </div>
+
+    <script src="validadores.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

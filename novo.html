@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abrir Chamado — Manutenção de Sistemas SENAI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="brand-wrapper">
+            <span class="brand-logo">SENAI</span>
+            <h1>Manutenção de Sistemas</h1>
+        </div>
+        <nav>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="novo.html" class="active">Abrir Chamado</a>
+            <a href="consulta.html">Consultar Chamados</a>
+            <button class="logout-btn" onclick="logout()">Sair</button>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="card">
+            <h2>Registrar Chamado de Manutenção</h2>
+            <p>Preencha os dados da ocorrência e classifique tecnicamente a intervenção de acordo com os princípios da norma ISO/IEC 14764.</p>
+            
+            <div id="formSuccess" class="alert success"></div>
+            
+            <form id="formNovo">
+                <div class="form-group">
+                    <label for="titulo">Título da Ocorrência <span class="required-mark">*</span></label>
+                    <input type="text" id="titulo" placeholder="Ex: Erro 500 no módulo financeiro ou Atualização de biblioteca PHP">
+                    <div class="form-help">Mínimo de 5 caracteres. Seja claro e objetivo.</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="tipoManutencao">Tipo de Manutenção (Classificação Técnica) <span class="required-mark">*</span></label>
+                    <select id="tipoManutencao">
+                        <option value="" disabled selected>Selecione a classificação do chamado...</option>
+                        <option value="Corretiva">Corretiva (corrige falha reportada)</option>
+                        <option value="Preventiva">Preventiva (antecipa problemas latentes)</option>
+                        <option value="Adaptativa">Adaptativa (ajusta a mudanças no ambiente)</option>
+                        <option value="Evolutiva">Evolutiva (inclui novas funcionalidades ou melhorias)</option>
+                    </select>
+                    <div class="form-help">Campo obrigatório para fins de triagem técnica e cálculo de indicadores PDCA.</div>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem;">
+                    <div class="form-group">
+                        <label for="categoria">Categoria do Ativo</label>
+                        <select id="categoria">
+                            <option value="Software">Software (Sistemas e Aplicações)</option>
+                            <option value="Hardware">Hardware (Equipamentos e Servidores)</option>
+                            <option value="Rede">Rede e Infraestrutura</option>
+                            <option value="Outros">Outros</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="prioridade">Prioridade de Atendimento</label>
+                        <select id="prioridade">
+                            <option value="Baixa">Baixa (Não impede operação)</option>
+                            <option value="Média" selected>Média (Impacto parcial com contorno)</option>
+                            <option value="Alta">Alta (Parada crítica ou bloqueio total)</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="descricao">Descrição Técnica do Problema ou Demanda <span class="required-mark">*</span></label>
+                    <textarea id="descricao" rows="5" placeholder="Descreva os sintomas, comportamento observado, ambiente de execução e justificativa para a manutenção..."></textarea>
+                    <div class="form-help">Mínimo de 10 caracteres para subsidiar a análise de causa-raiz.</div>
+                </div>
+                
+                <button type="submit" class="btn">Registrar Chamado</button>
+            </form>
+        </div>
+
+        <div class="pedagogical-notice">
+            <span>Manutenção de Sistemas:</span> Objeto didático de aplicação para diagnóstico, classificação de chamados e PDCA.
+        </div>
+    </div>
+
+    <script src="validadores.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

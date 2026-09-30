@@ -1,0 +1,27 @@
+{
+  "name": "manutencao-sistemas-senai",
+  "version": "1.0.0",
+  "description": "Sistema Didático para a Unidade Curricular Manutenção de Sistemas (30h, 10 aulas) - SENAI",
+  "type": "module",
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:ui": "vitest --ui"
+  },
+  "keywords": [
+    "senai",
+    "manutencao-de-sistemas",
+    "corretiva",
+    "preventiva",
+    "adaptativa",
+    "evolutiva",
+    "pdca",
+    "vitest",
+    "versionamento-ab"
+  ],
+  "author": "SENAI - Desenvolvimento de Sistemas",
+  "license": "MIT",
+  "devDependencies": {
+    "vitest": "^1.6.0"
+  }
+}
