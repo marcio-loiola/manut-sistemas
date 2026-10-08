@@ -2,100 +2,84 @@
 
 > **MATERIAL DE USO EXCLUSIVO DO CORPO DOCENTE — SENAI**  
 > **Unidade Curricular:** Manutenção de Sistemas (30 Horas / 10 Encontros)  
+> **Aula Específica:** Dia 3 (150 minutos) — Triagem, Priorização e Plano de Manutenção  
 > **Curso:** Técnico em Desenvolvimento de Sistemas  
-> **Referencial Normativo:** ISO/IEC 14764
+> **Referenciais:** Matriz de Eisenhower (ferramenta de reflexão) e ISO/IEC 14764 (processos de manutenção)
 
 ---
 
-## 1. Visão Geral e Cronograma Sugerido de 10 Aulas (3h cada)
+## 1. Dinâmica da Aula do Dia 3 (150 minutos)
 
-| Aula | Tema Central | Atividades com o Sistema Didático |
-|:---:|---|---|
-| **01** | Ciclo de Vida do Software e Introdução à Manutenção | Apresentação do sistema legado; acesso via `index.html`; primeiros registros e navegação. |
-| **02** | Tipologia de Manutenção (ISO/IEC 14764) | Classificação prática de chamados: Corretiva, Preventiva, Adaptativa e Evolutiva na tela `novo.html`. |
-| **03** | Diagnóstico de Falhas e Análise de Causa-Raiz | Investigação de anomalias na **Versão A** (DEF-001 prioridade de Hardware e DEF-004 busca). |
-| **04** | Registro de Evidências e Ficha Técnica de Atendimento | Elaboração do portfólio externo (Google Docs / Sheets / Notion); documentação de sintomas e contornos. |
-| **05** | Métricas de Sustentação e Ciclo PDCA (Fase Plan & Do) | Coleta de dados no Dashboard; montagem da planilha externa com as fórmulas de MTTR, MTBF e % por tipo. |
-| **06** | Versionamento de Software e Reteste na Versão B | Ativação da **Versão B (v1.1.0)**; verificação das correções aplicadas (Reteste dos DEF-001 a DEF-005). |
-| **07** | Efeitos Colaterais e Testes de Regressão | Descoberta guiada das regressões da Versão B (`DEF-REG-001` e `DEF-REG-002`); análise de impacto. |
-| **08** | Testes Automatizados como Barreira de Regressão | Execução da suíte Vitest (`npm test`); análise de funções puras isoladas em `validadores.js`. |
-| **09** | Ciclo PDCA (Fase Check & Act): Análise dos Indicadores | Cálculo das métricas comparativas (Versão A vs. Versão B) na planilha externa; proposição de melhorias. |
-| **10** | Apresentação dos Portfólios e Fechamento da UC | Avaliação final do portfólio individual/grupo; consolidação dos aprendizados da disciplina. |
+A aula está estruturada em três blocos pedagógicos complementares:
 
----
+### Bloco 1 (40 min): Aquecimento com Visualização de Fluxo (Kanban)
+- Os estudantes jogam externamente o *Kanban Board Game* (ou simulação física/digital equivalente).
+- **Objetivo:** Compreender limites de trabalho em andamento (WIP), gargalos e a necessidade de não iniciar todas as tarefas ao mesmo tempo.
 
-## 2. Catálogo Completo de Defeitos Pedagógicos (Versão A)
+### Bloco 2 (50 min): Eisenhower, Dimensões de SLA e Ficha de Priorização
+- **Exposição docente:** O professor apresenta a Matriz de Eisenhower como modelo mental (Importante x Urgente). Em seguida, conecta com a realidade técnica: *O que torna um chamado urgente em TI? (SLA, falta de contingência, usuários parados).*
+- **Prática no sistema:** Os alunos acessam a aplicação com usuário `aluno`, examinam os 6 chamados e utilizam o botão **Ver análise** para extrair as variáveis.
+- **Produção externa:** Os alunos preenchem a Ficha de Priorização no Google Sheets/Docs e definem a ordem da fila com base em Impacto, Urgência e SLA.
 
-### **DEF-001: Forçamento Indevido de Prioridade Baixa para Hardware**
-- **Tela:** `novo.html`
-- **Tipo:** **Corretiva** (Falha de lógica de negócio).
-- **Comportamento Obtido (Versão A):** Ao selecionar categoria `Hardware` e prioridade `Alta`, o sistema força a gravação com prioridade `Baixa`.
-- **Solução na Versão B:** Mantém a prioridade informada pelo usuário.
-
-### **DEF-002: Ausência de Validação de Tipo de Manutenção e Campos Obrigatórios**
-- **Tela:** `novo.html`
-- **Tipo:** **Adaptativa / Preventiva** (Conformidade com padrões operacionais).
-- **Comportamento Obtido (Versão A):** O formulário submete mesmo sem selecionar o tipo de manutenção e com campos em branco.
-- **Solução na Versão B:** Validações obrigatórias de tipo de manutenção, título (>=5 chars) e descrição (>=10 chars).
-
-### **DEF-003: Subnotificação de Chamados Abertos no Dashboard**
-- **Tela:** `dashboard.html`
-- **Tipo:** **Corretiva** (Erro de agregação de dados gerenciais).
-- **Comportamento Obtido (Versão A):** O contador de Abertos ignora chamados cuja prioridade seja "Baixa".
-- **Solução na Versão B:** Contabiliza todos os chamados abertos independentemente de prioridade.
-
-### **DEF-004: Busca Textual Sensível a Maiúsculas/Minúsculas**
-- **Tela:** `consulta.html`
-- **Tipo:** **Evolutiva / Adaptativa** (Tolerância e usabilidade de busca).
-- **Comportamento Obtido (Versão A):** Busca com `includes(term)` sem normalização para minúsculas.
-- **Solução na Versão B:** Utiliza `.toLowerCase()` para busca case-insensitive.
-
-### **DEF-005: Efeito Hidra ao Encerrar Chamados (Duplicação Anômala)**
-- **Tela:** `consulta.html`
-- **Tipo:** **Corretiva** (Falha de transição de estado).
-- **Comportamento Obtido (Versão A):** Ao encerrar um chamado, o sistema cria automaticamente uma cópia aberta ("Reabertura indevida: ...").
-- **Solução na Versão B:** Encerramento limpo sem duplicações.
+### Bloco 3 (60 min): Seleção do Top 3 e Elaboração do Plano de Manutenção
+- As equipes debatem e convergem para um **Top 3 de chamados**.
+- Elaboram o **Plano de Manutenção Inicial** no portfólio externo respondendo: *O que tratar? Por que? Quem é responsável? Qual a primeira ação? Como validar?*
 
 ---
 
-## 3. Catálogo de Regressões Didáticas (Versão B)
+## 2. Análise Técnica dos Seis Chamados e Gabarito de Priorização
 
-### **DEF-REG-001: Redefinição Involuntária de Prioridade ao Mudar Status**
-- **Cenário:** O operador altera o status de um chamado para `Em andamento`.
-- **Efeito Colateral na Versão B:** A prioridade do chamado é resetada compulsoriamente para `Média`.
+A tabela abaixo resume a análise técnica de referência para o docente:
 
-### **DEF-REG-002: Anulação do Filtro de Tipo em Buscas Textuais Cruzadas**
-- **Cenário:** Na tela `consulta.html`, o operador filtra por Tipo de Manutenção `Corretiva` e digita uma palavra no campo de busca.
-- **Efeito Colateral na Versão B:** A busca textual anula o filtro de tipo de manutenção, retornando chamados de qualquer tipo.
+| ID | Título | Tipo | Impacto | Urgência | Prioridade Atual | Sugerida (Matriz) | Contingência? | Classificação Recomendada |
+|:---:|---|:---:|:---:|:---:|:---:|:---:|:---:|:---|
+| **#1** | Erro 500 relatório financeiro | Corretiva | Alto | Alta | Alta | **P1** | **Não** | **Top 1 / Crítico** (Setor financeiro paralisado no fechamento mensal). |
+| **#5** | Falha na placa de rede Lab 03 | Corretiva | Alto | Alta | Alta | **P1** | **Não** | **Top 2 / Crítico** (Turma inteira impedida de realizar aula prática). |
+| **#2** | Limpeza de logs (disco a 88%) | Preventiva | Médio | Média | Média | **P3** | **Sim** | **Top 3 (Candidato Forte)**: P3 pela matriz pura, mas risco iminente de colapso de todo o servidor se atingir 100%. |
+| **#6** | Revisão trimestral no-breaks | Preventiva | Médio | Baixa | Baixa | **P4** | **Sim** | **Planejável** (Importante para evitar desastres, mas agendável em janela). |
+| **#4** | Exportação CSV solicitada | Evolutiva | Médio | Baixa | Média | **P4** | **Sim** | **Planejável** (Gera produtividade, mas há consulta manual na tela). |
+| **#3** | Adequação visual SENAI 2026 | Adaptativa | Médio | Baixa | Baixa | **P4** | **Sim** | **Planejável** (Mudança de conformidade com prazo institucional longo). |
+
+### Discussão Pedagógica Esperada dos Alunos:
+- **Consenso quase unânime:** Chamados **#1** e **#5** devem encabeçar o Top 3 porque combinam impacto alto, urgência alta, SLA curto (4h) e **ausência total de contingência**.
+- **A grande discussão da aula (O terceiro lugar):**
+  - Estudantes com visão estritamente reativa podem colocar o chamado #4 por ser pedido da Coordenação.
+  - Estudantes com visão preventiva e madura escolherão o **#2 (Logs a 88%)**, justificando que se o disco atingir 100%, todos os outros sistemas cairão. **Essa reflexão deve ser valorizada pelo docente!**
 
 ---
 
-## 4. Gabarito de Indicadores PDCA para Planilha Externa
+## 3. Gestão do Bloqueio de Edição no Sistema
 
-### 4.1. Chamados Iniciais de Fábrica
+Para garantir que os estudantes não alterem status ou dados dos chamados durante a aula do Dia 3:
+1. O sistema mantém o modo estudante com **edição bloqueada por padrão** (`manutencao_permitir_edicao_aluno = "false"`).
+2. Na tela de consulta, o estudante consegue visualizar todas as informações, usar filtros, abrir o modal de análise, copiar dados e exportar CSV, mas os botões e selects de alteração permanecem desabilitados com aviso explícito.
+3. **Nas aulas futuras (Aulas 6 a 10):**
+   - O professor acessa com `professor@senai.br` / `SenhaValida123`.
+   - Clica em **⚙️ Painel Docente** no rodapé.
+   - Clica no botão **🔓 Liberar Edição para Estudantes (Aulas Posteriores)**.
+   - A partir desse momento, os estudantes poderão testar a alteração de status e edição em sala.
 
-| ID | Título | Tipo de Manutenção | Status | Prioridade |
-|:---:|---|:---:|:---:|:---:|
-| **#1** | Erro 500 ao gerar relatório mensal financeiro | **Corretiva** | Aberto | Alta |
-| **#2** | Limpeza de logs e rotação de disco no servidor | **Preventiva** | Em andamento | Média |
-| **#3** | Adequação do layout ao padrão visual SENAI 2026 | **Adaptativa** | Encerrado | Baixa |
-| **#4** | Exportação de relatórios de chamados para formato CSV | **Evolutiva** | Aberto | Média |
-| **#5** | Falha intermitente na placa de rede do laboratório 03 | **Corretiva** | Em andamento | Alta |
-| **#6** | Revisão periódica dos no-breaks e baterias da sala de servidores | **Preventiva** | Encerrado | Baixa |
+---
 
-### 4.2. Cálculos de Distribuição Percentual (Gabarito da Fase CHECK)
+## 4. Rubrica de Avaliação do Portfólio Externo
 
-- **Total Geral de Chamados:** 6 chamados
-- **Corretivas:** 2 chamados $\to \mathbf{33{,}33\%}$
-- **Preventivas:** 2 chamados $\to \mathbf{33{,}33\%}$
-- **Adaptativas:** 1 chamado $\to \mathbf{16{,}67\%}$
-- **Evolutivas:** 1 chamado $\to \mathbf{16{,}67\%}$
+| Critério de Avaliação | Insuficiente (0 - 4) | Regular (5 - 6) | Bom (7 - 8) | Excelente (9 - 10) |
+|---|---|---|---|---|
+| **Qualidade da Justificativa** | Decisão sem justificativa ou baseada em preferência pessoal. | Justificativa superficial, sem citar impacto ou urgência. | Justifica com base em quem é afetado e tempo de SLA. | Articula impacto no negócio, urgência, presença de contingência e risco de inação. |
+| **Leitura de Impacto e Urgência** | Confunde urgência com impacto. | Identifica isoladamente, mas erra no cruzamento da matriz. | Aplica corretamente a matriz e identifica os chamados P1. | Analisa criticamente a matriz e pondera riscos adicionais (ex: disco a 88%). |
+| **Coerência da Primeira Ação** | Propõe ações desconexas com o problema. | Propõe soluções genéricas sem diagnóstico prévio. | Define ação adequada (ex: reproduzir falha para bugs, planejar para preventivas). | Detalha primeira ação e critério objetivo de validação final da entrega. |
+| **Estrutura do Plano de Manutenção** | Incompleto ou não entrega o Top 3. | Lista apenas os títulos sem detalhar responsáveis ou prazos. | Plano estruturado com os 5 elementos requeridos para os 3 chamados. | Plano profissional, claro, pronto para execução pela equipe de suporte. |
 
-### 4.3. Simulação de MTTR
+---
 
-| Chamado | Tipo | Horas |
-|---|---|:---:|
-| **#3 (Adaptativa)** | Padrão Visual 2026 | 5,0 h |
-| **#6 (Preventiva)** | Revisão No-breaks | 3,0 h |
+## 5. Mapeamento Interno de Defeitos Pedagógicos (Uso Exclusivo do Docente)
 
-$$\text{MTTR} = \frac{5{,}0 + 3{,}0}{2} = \mathbf{4{,}0\text{ horas por chamado encerrado}}$$
+> **ATENÇÃO:** Nunca revele estes códigos ou mencione "bugs intencionais" aos alunos na interface.
+
+- **DEF-001 (Versão A):** Ao cadastrar novo chamado em `novo.html` com categoria Hardware, o sistema força prioridade Baixa.
+- **DEF-002 (Versão A):** Formulário de novo chamado não valida tipo de manutenção nem campos mínimos.
+- **DEF-003 (Versão A):** Card de chamados abertos no Dashboard ignora prioridade Baixa.
+- **DEF-004 (Versão A):** Busca textual na consulta é sensível a maiúsculas/minúsculas.
+- **DEF-005 (Versão A):** Efeito hidra — ao encerrar chamado na tabela, cria cópia reaberta.
+- **DEF-REG-001 (Versão B):** Ao alterar status para "Em andamento", prioridade reseta para Média.
+- **DEF-REG-002 (Versão B):** Busca de texto combinada com filtro de tipo anula o filtro de tipo.
